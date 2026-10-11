@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>عداد الكلمات والحروف — لوحة الأدوات</title>
+  <!-- تطبيق الثيم فورًا لمنع الوميض الأبيض عند التنقل -->
+  <script>!function(){try{var t=localStorage.getItem('toolbox_theme_v1');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.setAttribute('data-theme','dark')}catch(e){}}();</script>
+  <style>html{background-color:#f4f7fb}html[data-theme="dark"]{background-color:#0e1620}</style>
+  <meta name="description" content="إحصاء الكلمات والحروف والجمل وزمن القراءة لحظيًا." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header__inner">
+        <a href="index.html" class="back-link" aria-label="العودة للصفحة الرئيسية">
+          <span aria-hidden="true">←</span> الرئيسية
+        </a>
+        <h1 class="tool-page-title">📊 عدّاد الكلمات والحروف</h1>
+        <button id="themeToggle" class="btn btn--icon theme-toggle" type="button"
+          aria-pressed="false" aria-label="تبديل الوضع الداكن">
+          <span class="icon-sun" aria-hidden="true">☀️</span>
+          <span class="icon-moon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="tool-page">
+    <div class="container tool-container">
+
+      <div class="tool-card-solo" id="counter-widget">
+
+        <div class="field">
+          <label class="field__label" for="counter-input">أدخل النص</label>
+          <textarea id="counter-input" class="field__input field__input--area"
+            placeholder="اكتب أو الصق النص هنا لتظهر الإحصاءات فورًا…"
+            rows="7"></textarea>
+        </div>
+
+        <div class="stats-grid" role="region" aria-label="إحصاءات النص" aria-live="polite">
+          <div class="stat">
+            <div class="stat__label">الكلمات</div>
+            <div class="stat__value" id="cnt-words">0</div>
+          </div>
+          <div class="stat">
+            <div class="stat__label">الحروف (مع مسافات)</div>
+            <div class="stat__value" id="cnt-chars">0</div>
+          </div>
+          <div class="stat">
+            <div class="stat__label">الحروف (بدون مسافات)</div>
+            <div class="stat__value" id="cnt-chars-no-space">0</div>
+          </div>
+          <div class="stat">
+            <div class="stat__label">الجمل</div>
+            <div class="stat__value" id="cnt-sentences">0</div>
+          </div>
+          <div class="stat">
+            <div class="stat__label">الفقرات</div>
+            <div class="stat__value" id="cnt-paragraphs">0</div>
+          </div>
+          <div class="stat">
+            <div class="stat__label">وقت القراءة</div>
+            <div class="stat__value" id="cnt-readtime">٠ ث</div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="tool-hint">💡 الإحصاءات تتحدث لحظيًا أثناء الكتابة.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p class="footer__copy">© <span id="year"></span> لوحة الأدوات الشخصية</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

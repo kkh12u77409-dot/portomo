@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تحويل حالة النص — لوحة الأدوات</title>
+  <!-- تطبيق الثيم فورًا لمنع الوميض الأبيض عند التنقل -->
+  <script>!function(){try{var t=localStorage.getItem('toolbox_theme_v1');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.setAttribute('data-theme','dark')}catch(e){}}();</script>
+  <style>html{background-color:#f4f7fb}html[data-theme="dark"]{background-color:#0e1620}</style>
+  <meta name="description" content="تحويل النص إلى أحرف كبيرة أو صغيرة أو حالة الجملة — مع نسخ فوري." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header__inner">
+        <a href="index.html" class="back-link" aria-label="العودة للصفحة الرئيسية">
+          <span aria-hidden="true">←</span> الرئيسية
+        </a>
+        <h1 class="tool-page-title">🔡 تحويل حالة النص</h1>
+        <button id="themeToggle" class="btn btn--icon theme-toggle" type="button"
+          aria-pressed="false" aria-label="تبديل الوضع الداكن">
+          <span class="icon-sun" aria-hidden="true">☀️</span>
+          <span class="icon-moon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="tool-page">
+    <div class="container tool-container">
+
+      <div class="tool-card-solo" id="case-widget">
+
+        <div class="field">
+          <label class="field__label" for="case-input">أدخل النص</label>
+          <textarea id="case-input" class="field__input field__input--area"
+            placeholder="اكتب أو الصق النص هنا…" rows="5"
+            aria-describedby="case-hint"></textarea>
+          <span id="case-hint" class="field__hint">ملاحظة: تحويل الحالة يؤثر على الأحرف اللاتينية فقط.</span>
+        </div>
+
+        <div class="btn-row" role="group" aria-label="خيارات التحويل">
+          <button class="btn btn--primary" type="button" id="case-upper">AA أحرف كبيرة</button>
+          <button class="btn" type="button" id="case-lower">aa أحرف صغيرة</button>
+          <button class="btn" type="button" id="case-title">Aa كل كلمة</button>
+          <button class="btn" type="button" id="case-sentence">جملة عادية</button>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="case-output">النتيجة</label>
+          <textarea id="case-output" class="field__input field__input--area"
+            rows="5" readonly aria-label="النص المحوَّل"></textarea>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn--ghost" type="button" id="case-copy">📋 نسخ النتيجة</button>
+          <button class="btn btn--ghost" type="button" id="case-clear">🗑️ تفريغ</button>
+          <p id="case-status" class="status" hidden></p>
+        </div>
+
+      </div>
+
+      <p class="tool-hint">💡 يدعم النص العربي والإنجليزي معًا.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p class="footer__copy">© <span id="year"></span> لوحة الأدوات الشخصية</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

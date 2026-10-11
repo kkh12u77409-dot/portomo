@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>اختيار عشوائي — لوحة الأدوات</title>
+  <meta name="description" content="اختر اسمًا أو فكرة عشوائيًا من قائمة تكتبها بنفسك." />
+  <script>!function(){try{var t=localStorage.getItem('toolbox_theme_v1');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.setAttribute('data-theme','dark')}catch(e){}}();</script>
+  <style>html{background-color:#f4f7fb}html[data-theme="dark"]{background-color:#0e1620}</style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container"><div class="header__inner">
+      <a href="index.html" class="back-link" aria-label="العودة للصفحة الرئيسية"><span aria-hidden="true">←</span> الرئيسية</a>
+      <h1 class="tool-page-title">🎲 اختيار عشوائي</h1>
+      <button id="themeToggle" class="btn btn--icon theme-toggle" type="button" aria-pressed="false" aria-label="تبديل الوضع الداكن"><span class="icon-sun" aria-hidden="true">☀️</span><span class="icon-moon" aria-hidden="true">🌙</span></button>
+    </div></div>
+  </header>
+
+  <main id="main" class="tool-page">
+    <div class="container tool-container">
+      <div class="tool-card-solo" id="picker-widget">
+        <div class="field">
+          <label class="field__label" for="picker-input">خياراتك</label>
+          <textarea id="picker-input" class="field__input field__input--area" rows="8" placeholder="اكتب كل خيار في سطر مستقل&#10;مثال:&#10;قراءة&#10;مشي&#10;فيلم" aria-describedby="picker-hint"></textarea>
+          <span id="picker-hint" class="field__hint">يُحسب كل سطر غير فارغ كخيار مستقل.</span>
+        </div>
+
+        <label class="checkbox-item">
+          <input type="checkbox" id="picker-remove" />
+          <span>احذف الخيار بعد اختياره</span>
+        </label>
+
+        <div class="picker-result" role="status" aria-live="polite" aria-label="الاختيار العشوائي">
+          <span class="picker-result__label">الاختيار</span>
+          <strong id="picker-output" class="picker-result__value">—</strong>
+          <span id="picker-count" class="picker-result__count">أضف خياراتك للبدء</span>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn--primary" type="button" id="picker-choose">🎲 اختر الآن</button>
+          <button class="btn btn--ghost" type="button" id="picker-copy">📋 نسخ الاختيار</button>
+          <button class="btn btn--ghost" type="button" id="picker-clear">🗑️ تفريغ</button>
+          <p id="picker-status" class="status" hidden></p>
+        </div>
+      </div>
+      <p class="tool-hint">💡 مفيد لاختيار شخص أو مهمة أو فكرة بسرعة وبشكل عادل.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo"><div class="container"><p class="footer__copy">© <span id="year"></span> لوحة الأدوات الشخصية</p></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>

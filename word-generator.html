@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مولد كلمات عشوائي — لوحة الأدوات</title>
+  <!-- تطبيق الثيم فورًا لمنع الوميض الأبيض عند التنقل -->
+  <script>!function(){try{var t=localStorage.getItem('toolbox_theme_v1');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.setAttribute('data-theme','dark')}catch(e){}}();</script>
+  <style>html{background-color:#f4f7fb}html[data-theme="dark"]{background-color:#0e1620}</style>
+  <meta name="description" content="توليد كلمات عربية عشوائية لكتابتك أو ألعابك أو اختباراتك." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header__inner">
+        <a href="index.html" class="back-link" aria-label="العودة للصفحة الرئيسية">
+          <span aria-hidden="true">←</span> الرئيسية
+        </a>
+        <h1 class="tool-page-title">✨ مولّد كلمات عشوائي</h1>
+        <button id="themeToggle" class="btn btn--icon theme-toggle" type="button"
+          aria-pressed="false" aria-label="تبديل الوضع الداكن">
+          <span class="icon-sun" aria-hidden="true">☀️</span>
+          <span class="icon-moon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="tool-page">
+    <div class="container tool-container">
+
+      <div class="tool-card-solo" id="gen-widget">
+
+        <div class="generator__controls">
+          <div class="field">
+            <label class="field__label" for="gen-category">التصنيف</label>
+            <select id="gen-category" class="field__input" aria-label="اختر تصنيف الكلمات">
+              <option value="general">كلمات عامة</option>
+              <option value="adjectives">صفات</option>
+              <option value="verbs">أفعال</option>
+              <option value="nature">طبيعة</option>
+              <option value="food">طعام</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field__label" for="gen-count">عدد الكلمات (١–٢٠)</label>
+            <input type="number" id="gen-count" class="field__input"
+              min="1" max="20" value="8"
+              aria-label="عدد الكلمات المراد توليدها"
+              aria-describedby="gen-count-hint" />
+          </div>
+        </div>
+        <span id="gen-count-hint" class="field__hint">أقصى حد: ٢٠ كلمة.</span>
+
+        <div class="btn-row">
+          <button class="btn btn--primary" type="button" id="gen-generate">✨ توليد</button>
+          <button class="btn btn--ghost" type="button" id="gen-copy" disabled>📋 نسخ</button>
+          <p id="gen-status" class="status" hidden></p>
+        </div>
+
+        <div class="chips" id="gen-output"
+          role="region" aria-label="الكلمات المولّدة" aria-live="polite"></div>
+
+        <p id="gen-error" class="field__error" role="alert" aria-live="assertive" hidden></p>
+      </div>
+
+      <p class="tool-hint">💡 اضغط "توليد" مرات متعددة للحصول على كلمات مختلفة.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p class="footer__copy">© <span id="year"></span> لوحة الأدوات الشخصية</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

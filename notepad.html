@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مفكرة شخصية — لوحة الأدوات</title>
+  <meta name="description" content="مفكرة نصية تحفظ ملاحظاتك تلقائيًا في المتصفح." />
+  <script>!function(){try{var t=localStorage.getItem('toolbox_theme_v1');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.setAttribute('data-theme','dark')}catch(e){}}();</script>
+  <style>html{background-color:#f4f7fb}html[data-theme="dark"]{background-color:#0e1620}</style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header__inner">
+        <a href="index.html" class="back-link">← الرئيسية</a>
+        <h1 class="tool-page-title">📝 مفكرة شخصية</h1>
+        <button id="themeToggle" class="btn btn--icon theme-toggle" type="button" aria-pressed="false" aria-label="تبديل الوضع الداكن">
+          <span class="icon-sun" aria-hidden="true">☀️</span>
+          <span class="icon-moon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="tool-page">
+    <div class="container tool-container">
+      <div class="tool-card-solo tool-card-solo--wide" id="notepad-widget">
+
+        <!-- شريط المفكرة -->
+        <div class="notepad-toolbar">
+          <span class="notepad-save-status" id="notepad-save-status" aria-live="polite">جاهزة</span>
+          <div class="btn-row">
+            <button class="btn btn--sm" type="button" id="notepad-copy">📋 نسخ الكل</button>
+            <button class="btn btn--sm" type="button" id="notepad-download">⬇️ تصدير .txt</button>
+            <button class="btn btn--sm btn--ghost" type="button" id="notepad-clear">🗑️ مسح</button>
+          </div>
+        </div>
+
+        <!-- منطقة الكتابة -->
+        <textarea id="notepad-input" class="field__input field__input--area notepad-area"
+          placeholder="ابدأ الكتابة… ملاحظاتك تُحفظ تلقائيًا."
+          aria-label="منطقة الكتابة" spellcheck="true"></textarea>
+
+        <!-- إحصاءات -->
+        <div class="notepad-stats" aria-live="polite" aria-label="إحصاءات النص">
+          <span id="np-words">0 كلمة</span>
+          <span>·</span>
+          <span id="np-chars">0 حرف</span>
+          <span>·</span>
+          <span id="np-lines">0 سطر</span>
+        </div>
+      </div>
+      <p class="tool-hint">💡 تُحفظ ملاحظاتك تلقائيًا — ستجدها عند العودة.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container"><p class="footer__copy">© <span id="year"></span> لوحة الأدوات الشخصية</p></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>

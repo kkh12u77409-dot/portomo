@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>محول الألوان — لوحة الأدوات</title>
+  <meta name="description" content="تحويل الألوان بين HEX وRGB وHSL مع معاينة حية." />
+  <script>!function(){try{var t=localStorage.getItem('toolbox_theme_v1');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.setAttribute('data-theme','dark')}catch(e){}}();</script>
+  <style>html{background-color:#f4f7fb}html[data-theme="dark"]{background-color:#0e1620}</style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header__inner">
+        <a href="index.html" class="back-link">← الرئيسية</a>
+        <h1 class="tool-page-title">🎨 محول الألوان</h1>
+        <button id="themeToggle" class="btn btn--icon theme-toggle" type="button" aria-pressed="false" aria-label="تبديل الوضع الداكن">
+          <span class="icon-sun" aria-hidden="true">☀️</span>
+          <span class="icon-moon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="tool-page">
+    <div class="container tool-container">
+      <div class="tool-card-solo" id="color-widget">
+
+        <!-- منتقي اللون -->
+        <div class="color-picker-row">
+          <input type="color" id="color-picker" class="color-native-input"
+            value="#0f766e" aria-label="اختر لونًا" />
+          <div class="color-preview" id="color-preview" style="background:#0f766e" aria-hidden="true"></div>
+        </div>
+
+        <!-- القيم المحولة -->
+        <div class="color-values">
+          <div class="color-value-item">
+            <label class="field__label" for="color-hex">HEX</label>
+            <div class="color-value-row">
+              <input type="text" id="color-hex" class="field__input" value="#0f766e"
+                placeholder="#rrggbb" aria-label="قيمة HEX" maxlength="7" />
+              <button class="btn btn--icon btn--sm" type="button" data-copy="color-hex" title="نسخ">📋</button>
+            </div>
+          </div>
+          <div class="color-value-item">
+            <label class="field__label" for="color-rgb">RGB</label>
+            <div class="color-value-row">
+              <input type="text" id="color-rgb" class="field__input" value="rgb(15, 118, 110)"
+                placeholder="rgb(r, g, b)" aria-label="قيمة RGB" readonly />
+              <button class="btn btn--icon btn--sm" type="button" data-copy="color-rgb" title="نسخ">📋</button>
+            </div>
+          </div>
+          <div class="color-value-item">
+            <label class="field__label" for="color-hsl">HSL</label>
+            <div class="color-value-row">
+              <input type="text" id="color-hsl" class="field__input" value="hsl(176, 77%, 26%)"
+                placeholder="hsl(h, s%, l%)" aria-label="قيمة HSL" readonly />
+              <button class="btn btn--icon btn--sm" type="button" data-copy="color-hsl" title="نسخ">📋</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- شرائح RGB -->
+        <div class="rgb-sliders" aria-label="شرائح تعديل RGB">
+          <div class="rgb-slider-row">
+            <label class="rgb-label" for="slider-r">R</label>
+            <input type="range" id="slider-r" class="range-input range-r" min="0" max="255" value="15" aria-label="القناة الحمراء" />
+            <span class="rgb-val" id="val-r">15</span>
+          </div>
+          <div class="rgb-slider-row">
+            <label class="rgb-label" for="slider-g">G</label>
+            <input type="range" id="slider-g" class="range-input range-g" min="0" max="255" value="118" aria-label="القناة الخضراء" />
+            <span class="rgb-val" id="val-g">118</span>
+          </div>
+          <div class="rgb-slider-row">
+            <label class="rgb-label" for="slider-b">B</label>
+            <input type="range" id="slider-b" class="range-input range-b" min="0" max="255" value="110" aria-label="القناة الزرقاء" />
+            <span class="rgb-val" id="val-b">110</span>
+          </div>
+        </div>
+
+        <p id="color-status" class="status" hidden></p>
+      </div>
+      <p class="tool-hint">💡 غيّر أي قيمة وسيتحدث باقي الحقول فورًا.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container"><p class="footer__copy">© <span id="year"></span> لوحة الأدوات الشخصية</p></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة الأدوات الشخصية</title>
+  <!-- تطبيق الثيم فورًا لمنع الوميض الأبيض عند التنقل -->
+  <script>!function(){try{var t=localStorage.getItem('toolbox_theme_v1');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.setAttribute('data-theme','dark')}catch(e){}}();</script>
+  <style>html{background-color:#f4f7fb}html[data-theme="dark"]{background-color:#0e1620}</style>
+  <meta name="description" content="مجموعة أدوات مفيدة تعمل مباشرة في متصفّحك: حسابات، نصوص، مؤقتات، تحويلات، وأدوات للمطورين." />
+  <meta name="theme-color" content="#0f766e" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== الشريط العلوي ===== -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header__inner">
+        <a href="index.html" class="brand" aria-label="الصفحة الرئيسية">
+          <span class="brand__icon" aria-hidden="true">🧰</span>
+          <span class="brand__text">لوحة <span class="brand__accent">الأدوات</span></span>
+        </a>
+        <div class="header__actions">
+          <button id="themeToggle" class="btn btn--icon theme-toggle" type="button"
+            aria-pressed="false" aria-label="تبديل الوضع الداكن" title="تبديل الوضع">
+            <span class="icon-sun" aria-hidden="true">☀️</span>
+            <span class="icon-moon" aria-hidden="true">🌙</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== المحتوى الرئيسي ===== -->
+  <main id="main">
+
+    <!-- قسم الترحيب -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero__content">
+          <div class="hero__badge">✨ أدوات مجانية بالكامل</div>
+          <h1 class="hero__title" id="hero-title">
+            لوحة الأدوات
+            <span class="text-accent">الشخصية</span>
+          </h1>
+          <p class="hero__text">
+            مجموعة أدوات سريعة وسهلة تعمل مباشرة في متصفّحك — بدون تسجيل، بدون إعلانات، وبياناتك محلية تمامًا.
+          </p>
+          <div class="hero__stats" role="list">
+            <div class="hero__stat" role="listitem"><strong>١٣</strong><span>أداة</span></div>
+            <div class="hero__stat" role="listitem"><strong>١٠٠٪</strong><span>مجاني</span></div>
+            <div class="hero__stat" role="listitem"><strong>🔒</strong><span>بياناتك خاصة</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- شبكة الأدوات -->
+    <section class="tools-section" aria-labelledby="tools-heading">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="tools-heading" class="section-title">اختر الأداة التي تحتاجها</h2>
+          <p class="section-desc">انقر على أي أداة للبدء فورًا</p>
+        </div>
+
+        <div class="home-grid" role="list">
+
+          <!-- آلة حاسبة -->
+          <a href="calculator.html" class="home-card reveal" role="listitem" id="card-calc"
+             aria-label="فتح الآلة الحاسبة">
+            <div class="home-card__icon" style="--card-color: #0f766e; --card-bg: #e3f2f0;">🧮</div>
+            <div class="home-card__body">
+              <h3 class="home-card__title">آلة حاسبة</h3>
+              <p class="home-card__desc">عمليات حسابية مع أقواس وكسور وقوى — بدون eval.</p>
+            </div>
+            <span class="home-card__cta">فتح الأداة ←</span>
+          </a>
+
+          <!-- تحويل النص -->
+          <a href="case-converter.html" class="home-card reveal" role="listitem" id="card-case"
+             aria-label="فتح أداة تحويل حالة النص">
+            <div class="home-card__icon" style="--card-color: #7c3aed; --card-bg: #ede9fe;">🔡</div>
+            <div class="home-card__body">
+              <h3 class="home-card__title">تحويل حالة النص</h3>
+              <p class="home-card__desc">أحرف كبيرة أو صغيرة أو حالة الجملة — مع نسخ فوري.</p>
+            </div>
+            <span class="home-card__cta">فتح الأداة ←</span>
+          </a>
+
+          <!-- عداد الكلمات -->
+          <a href="text-counter.html" class="home-card reveal" role="listitem" id="card-counter"
+             aria-label="فتح عداد الكلمات والحروف">
+            <div class="home-card__icon" style="--card-color: #b45309; --card-bg: #fef3c7;">📊</div>
+            <div class="home-card__body">
+              <h3 class="home-card__title">عدّاد الكلمات والحروف</h3>
+              <p class="home-card__desc">إحصاءات لحظية: كلمات، حروف، جمل، فقرات، ووقت القراءة.</p>
+            </div>
+            <span class="home-card__cta">فتح الأداة ←</span>
+          </a>
+
+          <!-- مؤقت -->
+          <a href="timer.html" class="home-card reveal" role="listitem" id="card-timer"
+             aria-label="فتح المؤقت التنازلي">
+            <div class="home-card__icon" style="--card-color: #dc2626; --card-bg: #fee2e2;">⏱️</div>
+            <div class="home-card__body">
+              <h3 class="home-card__title">مؤقت</h3>
+              <p class="home-card__desc">عداد تنازلي مع شريط تقدم وتنبيه صوتي عند الانتهاء.</p>
+            </div>
+            <span class="home-card__cta">فتح الأداة ←</span>
+          </a>
+
+          <!-- مولد كلمات -->
+          <a href="word-generator.html" class="home-card reveal" role="listitem" id="card-gen"
+             aria-label="فتح مولد الكلمات العشوائية">
+            <div class="home-card__icon" style="--card-color: #0369a1; --card-bg: #e0f2fe;">✨</div>
+            <div class="home-card__body">
+              <h3 class="home-card__title">مولّد كلمات عشوائي</h3>
+              <p class="home-card__desc">توليد كلمات عربية عشوائية لكتابتك أو ألعابك أو اختباراتك.</p>
+            </div>
+            <span class="home-card__cta">فتح الأداة ←</span>
+          </a>
+
+          <!-- مولد كلمات المرور -->
+          <a href="password-generator.html" class="home-card reveal" role="listitem" id="card-pass"
+             aria-label="فتح مولد كلمات المرور">
+            <div class="home-card__icon" style="--card-color: #be185d; --card-bg: #fce7f3;">🔐</div>
+            <div class="home-card__body">
+              <h3 class="home-card__title">مولّد كلمات المرور</h3>
+              <p class="home-card__desc">توليد كلمات مرور قوية مع مؤشر مستوى الأمان وخيارات مرنة.</p>
+            </div>
+            <span class="home-card__cta">فتح الأداة ←</span>
+          </a>
+
+          <!-- محول الألوان -->
+          <a href="color-converter.html" class="home-card reveal" role="listitem" id="card-color"
+             aria-label="فتح محول الألوان">
+            <div class="home-card__icon" style="--card-color: #9333ea; --card-bg: #f3e8ff;">🎨</div>
+            <div class="home-card__body">
+              <h3 class="home-card__title">محول الألوان</h3>
+              <p class="home-card__desc">تحويل الألوان بين HEX وRGB وHSL مع شرائح تحكم حية.</p>
+            </div>
+            <span class="home-card__cta">فتح الأداة ←</span>
+          </a>
+
+          <!-- محول الوحدات -->
+          <a href="unit-converter.html" class="home-card reveal" role="listitem" id="card-unit"
+             aria-label="فتح محول الوحدات">
+            <div class="home-card__icon" style="--card-color: #0e7490; --card-bg: #cffafe;">📐</div>
+            <div class="home-card__body">
+              <h3 class="home-card__title">محول الوحدات</h3>
+              <p class="home-card__desc">تحويل الطول والوزن ودرجة الحرارة والمساحة بسهولة.</p>
+            </div>
+            <span class="home-card__cta">فتح الأداة ←</span>
+          </a>
+
+          <!-- مفكرة -->
+          <a href="notepad.html" class="home-card reveal" role="listitem" id="card-notepad"
+             aria-label="فتح المفكرة الشخصية">
+            <div class="home-card__icon" style="--card-color: #65a30d; --card-bg: #ecfccb;">📝</div>
+            <div class="home-card__body">
+              <h3 class="home-card__title">مفكرة شخصية</h3>
+              <p class="home-card__desc">نصوص تُحفظ تلقائيًا في متصفّحك — لا حاجة لتسجيل دخول.</p>
+            </div>
+            <span class="home-card__cta">فتح الأداة ←</span>
+          </a>
+
+          <!-- حاسب العمر -->
+          <a href="age-calculator.html" class="home-card reveal" role="listitem" id="card-age"
+             aria-label="فتح حاسب العمر">
+            <div class="home-card__icon" style="--card-color: #ea580c; --card-bg: #ffedd5;">🎂</div>
+            <div class="home-card__body">
+              <h3 class="home-card__title">حاسب العمر</h3>
+              <p class="home-card__desc">احسب عمرك بالسنوات والأشهر والأيام واعرف متى عيد ميلادك.</p>
+            </div>
+            <span class="home-card__cta">فتح الأداة ←</span>
+          </a>
+
+          <!-- منسق JSON -->
+          <a href="json-formatter.html" class="home-card reveal" role="listitem" id="card-json"
+             aria-label="فتح منسق ومدقق JSON">
+            <div class="home-card__icon" style="--card-color: #1d4ed8; --card-bg: #dbeafe;">{ }</div>
+            <div class="home-card__body">
+              <h3 class="home-card__title">منسّق JSON</h3>
+              <p class="home-card__desc">تحقق من صحة JSON ونسّقه أو صغّره مع نسخ النتيجة.</p>
+            </div>
+            <span class="home-card__cta">فتح الأداة ←</span>
+          </a>
+
+          <!-- اختيار عشوائي -->
+          <a href="random-picker.html" class="home-card reveal" role="listitem" id="card-picker"
+             aria-label="فتح أداة الاختيار العشوائي">
+            <div class="home-card__icon" style="--card-color: #a21caf; --card-bg: #fae8ff;">🎲</div>
+            <div class="home-card__body">
+              <h3 class="home-card__title">اختيار عشوائي</h3>
+              <p class="home-card__desc">اختر اسمًا أو فكرة عشوائيًا من قائمة خاصة بك.</p>
+            </div>
+            <span class="home-card__cta">فتح الأداة ←</span>
+          </a>
+
+          <!-- ساعة إيقاف -->
+          <a href="stopwatch.html" class="home-card reveal" role="listitem" id="card-stopwatch"
+             aria-label="فتح ساعة الإيقاف">
+            <div class="home-card__icon" style="--card-color: #be123c; --card-bg: #ffe4e6;">⏱️</div>
+            <div class="home-card__body">
+              <h3 class="home-card__title">ساعة إيقاف</h3>
+              <p class="home-card__desc">تتبع الوقت بدقة وسجّل أزمنة اللفّات.</p>
+            </div>
+            <span class="home-card__cta">فتح الأداة ←</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== التذييل ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p class="footer__copy">© <span id="year"></span> لوحة الأدوات الشخصية — جميع الأدوات مجانية وتعمل بدون إنترنت.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

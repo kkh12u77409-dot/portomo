@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مؤقت — لوحة الأدوات</title>
+  <!-- تطبيق الثيم فورًا لمنع الوميض الأبيض عند التنقل -->
+  <script>!function(){try{var t=localStorage.getItem('toolbox_theme_v1');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.setAttribute('data-theme','dark')}catch(e){}}();</script>
+  <style>html{background-color:#f4f7fb}html[data-theme="dark"]{background-color:#0e1620}</style>
+  <meta name="description" content="مؤقت تنازلي مع شريط تقدم وتنبيه صوتي عند الانتهاء." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header__inner">
+        <a href="index.html" class="back-link" aria-label="العودة للصفحة الرئيسية">
+          <span aria-hidden="true">←</span> الرئيسية
+        </a>
+        <h1 class="tool-page-title">⏱️ مؤقت</h1>
+        <button id="themeToggle" class="btn btn--icon theme-toggle" type="button"
+          aria-pressed="false" aria-label="تبديل الوضع الداكن">
+          <span class="icon-sun" aria-hidden="true">☀️</span>
+          <span class="icon-moon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="tool-page">
+    <div class="container tool-container">
+
+      <div class="tool-card-solo" id="timer-widget">
+
+        <!-- شاشة الوقت -->
+        <div class="timer__screen" aria-live="polite" aria-label="عرض الوقت">
+          <div class="timer__time" id="timer-display" aria-label="الوقت المتبقي">00:00</div>
+          <div class="timer__bar" role="progressbar" aria-valuenow="100"
+            aria-valuemin="0" aria-valuemax="100" aria-label="شريط التقدم">
+            <span class="timer__bar-fill" id="timer-bar-fill" style="width:100%"></span>
+          </div>
+        </div>
+
+        <!-- أوقات سريعة -->
+        <div class="btn-row timer__presets" role="group" aria-label="أوقات سريعة">
+          <button class="btn btn--sm" type="button" data-timer-preset="60">١ د</button>
+          <button class="btn btn--sm" type="button" data-timer-preset="300">٥ د</button>
+          <button class="btn btn--sm" type="button" data-timer-preset="600">١٠ د</button>
+          <button class="btn btn--sm" type="button" data-timer-preset="1500">٢٥ د</button>
+        </div>
+
+        <!-- حقول الإدخال -->
+        <div class="timer__inputs">
+          <div class="field">
+            <label class="field__label" for="timer-minutes">الدقائق</label>
+            <input type="number" id="timer-minutes" class="field__input"
+              min="0" max="99" value="5" aria-label="عدد الدقائق" />
+          </div>
+          <div class="field">
+            <label class="field__label" for="timer-seconds">الثواني</label>
+            <input type="number" id="timer-seconds" class="field__input"
+              min="0" max="59" value="0" aria-label="عدد الثواني" />
+          </div>
+        </div>
+
+        <!-- أزرار التحكم -->
+        <div class="timer__actions" role="group" aria-label="أزرار التحكم">
+          <button class="btn btn--primary" type="button" id="timer-start">▶ تشغيل</button>
+          <button class="btn" type="button" id="timer-pause" disabled>⏸ إيقاف مؤقت</button>
+          <button class="btn btn--ghost" type="button" id="timer-reset">↺ إعادة</button>
+        </div>
+
+        <p id="timer-error" class="field__error" role="alert" aria-live="assertive" hidden></p>
+      </div>
+
+      <p class="tool-hint">💡 سيصدر تنبيه صوتي عند انتهاء الوقت.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p class="footer__copy">© <span id="year"></span> لوحة الأدوات الشخصية</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
