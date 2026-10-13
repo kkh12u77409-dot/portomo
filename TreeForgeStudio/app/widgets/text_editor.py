@@ -9,7 +9,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Optional
 
-from PyQt6.QtCore import pyqtSignal, QRegularExpression
+from PyQt6.QtCore import pyqtSignal
 from PyQt6.QtGui import (
     QFont,
     QTextCursor,
@@ -198,6 +198,10 @@ class TextEditor(QWidget):
     def set_read_only(self, read_only: bool) -> None:
         self._editor.setReadOnly(read_only)
 
+    def is_read_only(self) -> bool:
+        """Return True if the inner editor is read-only."""
+        return self._editor.isReadOnly()
+
     def focus_editor(self) -> None:
         self._editor.setFocus()
 
@@ -246,25 +250,27 @@ class TextEditor(QWidget):
     ) -> None:
         if not find:
             return
-        cursor = self._editor.textCursor()
-        cursor.beginEditBlock()
-        # Use regex for whole-word matching.
-        regex = self._build_regex(find, case_sensitive, whole_words)
-        if regex:
-            text = self._editor.toPlainText()
-            new_text = regex.sub(replace.replace("\\", "\\\\"), text)
-            self._editor.setPlainText(new_text)
-        cursor.endEditBlock()
+        import re as _re
 
-    def _build_regex(self, find: str, case_sensitive: bool, whole_words: bool) -> Optional[QRegularExpression]:
-        import re
-        pattern = re.escape(find)
+        pattern = _re.escape(find)
         if whole_words:
             pattern = r"\b" + pattern + r"\b"
-        rx = QRegularExpression(pattern)
-        if not case_sensitive:
-            rx.setPatternOptions(QRegularExpression.PatternOption.CaseInsensitiveOption)
-        return rx
+        flags = 0 if case_sensitive else _re.IGNORECASE
+        try:
+            compiled = _re.compile(pattern, flags)
+        except _re.error:
+            return
+        text = self._editor.toPlainText()
+        # ``re.sub`` treats backslashes in the replacement specially; keep
+        # literal backslashes by escaping them.
+        replacement = replace.replace("\\", "\\\\")
+        new_text = compiled.sub(replacement, text)
+        if new_text != text:
+            cursor = self._editor.textCursor()
+            cursor.beginEditBlock()
+            cursor.select(QTextCursor.SelectionType.Document)
+            cursor.insertText(new_text)
+            cursor.endEditBlock()
 
     def _matches(self, text: str, find: str, case_sensitive: bool, whole_words: bool) -> bool:
         if not case_sensitive:

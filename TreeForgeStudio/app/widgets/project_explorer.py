@@ -161,8 +161,10 @@ class ProjectExplorer(QWidget):
         return entry
 
     def _collect_paths(self, nodes: list[ExplorerNode]) -> None:
+        """Collect the relative paths of all *file* nodes (not directories)."""
         for n in nodes:
-            self._all_rel_paths.add(n.rel_path)
+            if n.is_file and n.rel_path:
+                self._all_rel_paths.add(n.rel_path)
             self._collect_paths(n.children or [])
 
     # ------------------------------------------------------------------

@@ -126,7 +126,8 @@ TreeForgeStudio/
 │   ├── test_project_service.py
 │   ├── test_file_content_service.py
 │   ├── test_settings.py
-│   └── test_translations.py
+│   ├── test_translations.py
+│   └── test_widgets.py         # Editor / multi-file / explorer widget tests
 └── docs/
     └── USER_GUIDE.md           # Detailed usage guide
 ```

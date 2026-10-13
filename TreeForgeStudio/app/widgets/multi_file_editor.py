@@ -177,7 +177,7 @@ class MultiFileEditor(QWidget):
             if isinstance(editor, TextEditor):
                 new_entries[i] = OpenFileEntry(
                     path=editor.get_path(),
-                    is_read_only=editor.isReadOnly(),
+                    is_read_only=editor.is_read_only(),
                 )
             else:
                 new_entries[i] = OpenFileEntry(path=None)
